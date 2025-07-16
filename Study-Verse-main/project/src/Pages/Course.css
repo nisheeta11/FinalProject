@@ -1,0 +1,83 @@
+.course-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.course-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a237e; /* navy-ish */
+}
+
+.course-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+.course-info {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.course-info p {
+  margin-bottom: 15px;
+}
+
+.course-info strong {
+  color: #1a237e;
+}
+
+.course-info .rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.course-info svg {
+  width: 20px;
+  height: 20px;
+  color: #ffd700; /* gold */
+  filter: drop-shadow(0 0 1px #b28704);
+}
+
+button {
+  background-color: #1a237e;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+button:hover {
+  background-color: #283593;
+}
+.add-to-cart-btn {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e67300;
+}

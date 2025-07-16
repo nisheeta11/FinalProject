@@ -1,0 +1,186 @@
+.tutor-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 40px 20px;
+}
+
+.teacher-dashboard-box {
+  width: 100%;
+  max-width: 600px;
+  background-color: #e6f0ff;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.teacher-dashboard-box h1 {
+  font-size: 26px;
+  color: #003366;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.teacher-dashboard-box p {
+  font-size: 15px;
+  color: #555;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f6ff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 600px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.teacher-dashboard-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-my-courses {
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-my-courses:hover {
+  background-color: #196dcf;
+}
+
+.btn-live-class {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.btn-live-class:hover {
+  background-color: #c62828;
+}
+
+.course-form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.course-form-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: navy;
+  margin-bottom: 25px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.form-input label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #495057;
+}
+
+.form-input input[type="text"],
+.form-input input[type="file"],
+.form-input select {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.form-input input[type="text"]:focus,
+.form-input input[type="file"]:focus,
+.form-input select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn-submit-course {
+  width: 100%;
+  padding: 14px;
+  background-color: #2d89ef;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 24px;
+}
+
+.btn-submit-course:hover {
+  background-color: #197def;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .course-form-container {
+    padding: 30px 20px;
+  }
+
+  .course-form-container h2 {
+    font-size: 20px;
+  }
+
+  .teacher-dashboard-box {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .teacher-dashboard-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

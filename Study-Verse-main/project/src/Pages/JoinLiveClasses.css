@@ -1,0 +1,26 @@
+.live-class-page {
+  padding: 2rem;
+}
+
+.class-list {
+  list-style: none;
+  padding: 0;
+}
+
+.class-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.join-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: orange;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}

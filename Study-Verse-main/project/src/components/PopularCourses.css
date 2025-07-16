@@ -1,0 +1,159 @@
+.pc-popular-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+}
+
+.pc-heading {
+  font-size: 36px;
+  color: navy;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+.pc-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ff6600;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 0px;
+  transition: background-color 0.3s ease;
+}
+
+.pc-live-btn:hover {
+  background-color: #e65c00;
+}
+
+.pc-live-btn svg {
+  font-size: 24px;
+}
+
+.pc-btn-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+
+}
+
+.pc-button-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ccc;
+  color: black;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.pc-button-btn.pc-active {
+  background-color: navy;
+  color: white;
+}
+
+.pc-card-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pc-course-card {
+  border: 1px solid #cbc6c6;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 420px;
+}
+
+.pc-course-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.pc-cCard-cont {
+  height: 300px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.pc-p-first {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.pc-card-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  margin-top: 30px;
+  margin-right: 10px;
+}
+
+.pc-card-btn a {
+  text-decoration: none;
+}
+
+.pc-btn-2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.pc-cart-btn {
+  background-color: #F57C00;
+  color: white;
+}
+
+.pc-cart-btn:hover {
+  background-color: #e67300;
+}
+
+.pc-buy-btn {
+  background-color: #2E7D32;
+  color: white;
+  padding: 5px 10px;
+}
+
+.pc-buy-btn:hover {
+  background-color: #1d6921;
+}
+
+.pc-cart-icon {
+  width: 25px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
