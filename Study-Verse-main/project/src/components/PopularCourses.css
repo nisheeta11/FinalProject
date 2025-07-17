@@ -157,3 +157,35 @@
   height: auto;
   filter: brightness(0) invert(1);
 }
+
+
+.pc-btn-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pc-live-btn,
+.pc-quiz-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #F57C00;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.pc-quiz-btn {
+  background-color: #2E7D32;
+}
+
+ 
+.pc-quiz-btn:hover {
+  background-color: #1d6921;
+}

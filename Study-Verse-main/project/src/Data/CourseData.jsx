@@ -294,12 +294,4 @@ const courses = {
   ]
 };
 
-// Flatten all courses adding category to each course
-const allCourses = Object.entries(courses).flatMap(([category, courseList]) =>
-  courseList.map(course => ({
-    ...course,
-    category
-  }))
-);
-
-export default allCourses;
+export default courses;
