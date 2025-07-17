@@ -6,7 +6,7 @@ export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch all courses from backend on component mount
+
   useEffect(() => {
     fetch('http://localhost:5000/api/courses')
       .then(res => res.json())
@@ -20,7 +20,7 @@ export const CourseProvider = ({ children }) => {
       });
   }, []);
 
-  // Add a new course via backend API
+ 
   const addCourse = async (newCourse) => {
     try {
       const response = await fetch('http://localhost:5000/api/courses', {
@@ -37,10 +37,10 @@ export const CourseProvider = ({ children }) => {
 
       const savedCourse = await response.json();
 
-      // Update local state to include new course
+   
       setCourses(prev => [...prev, savedCourse]);
 
-      return savedCourse._id || savedCourse.id; // return the ID of new course
+      return savedCourse._id || savedCourse.id; 
     } catch (error) {
       console.error('Error adding course:', error);
       return null;

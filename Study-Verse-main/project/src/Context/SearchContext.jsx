@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './SearchContext.css';
 import search from '../assets/searchicon.svg';
 import coursesData from '../Data/CourseData';
+import categoryKeywordsMap from '../Data/categoryKeywordsMap';
 
 const allCourses = Object.values(coursesData).flat();
 
@@ -36,13 +37,25 @@ const Search = () => {
       return;
     }
 
-    const grams = generate3Grams(input);
+    const queryLower = input.trim().toLowerCase();
 
-    const matches = allCourses.filter(course => {
-      const title = course.title.toLowerCase();
-      const description = course.description.toLowerCase();
-      return grams.some(gram => title.includes(gram) || description.includes(gram));
-    });
+    const matchedCategory = Object.entries(categoryKeywordsMap).find(([keyword]) =>
+      queryLower.includes(keyword)
+    );
+
+    let matches = [];
+
+    if (matchedCategory) {
+      const categoryName = matchedCategory[1];
+      matches = allCourses.filter(course => course.category === categoryName);
+    } else {
+      const grams = generate3Grams(input);
+      matches = allCourses.filter(course => {
+        const title = course.title.toLowerCase();
+        const description = course.description.toLowerCase();
+        return grams.some(gram => title.includes(gram) || description.includes(gram));
+      });
+    }
 
     setResults(matches);
     setShowDropdown(true);
@@ -55,13 +68,24 @@ const Search = () => {
       return;
     }
 
-    const foundCourse = allCourses.find(course =>
-      course.title.toLowerCase().includes(queryLower) ||
-      course.description.toLowerCase().includes(queryLower)
+    const matchedCategory = Object.entries(categoryKeywordsMap).find(([keyword]) =>
+      queryLower.includes(keyword)
     );
 
-    if (foundCourse) {
-      navigate(`/course/${foundCourse.id}`);
+    let foundCourses = [];
+
+    if (matchedCategory) {
+      const categoryName = matchedCategory[1];
+      foundCourses = allCourses.filter(course => course.category === categoryName);
+    } else {
+      foundCourses = allCourses.filter(course =>
+        course.title.toLowerCase().includes(queryLower) ||
+        course.description.toLowerCase().includes(queryLower)
+      );
+    }
+
+    if (foundCourses.length > 0) {
+      navigate(`/course/${foundCourses[0].id}`);
       setQuery('');
       setResults([]);
       setShowDropdown(false);
