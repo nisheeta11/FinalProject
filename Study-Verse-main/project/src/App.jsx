@@ -18,6 +18,7 @@ import ScheduleClassForm from './Pages/ScheduleClassForm';
 import JoinLiveClass from './Pages/JoinLiveClasses';
 import AdminPanel from './Pages/AdminPanel';
 import UploadedCourses from './Pages/UploadedCourses';
+import QuizPage from './Pages/QuizPage';
 
 import { CourseProvider } from './Context/CourseContext';
 import { AuthContext } from './Context/AuthContext';
@@ -98,6 +99,12 @@ function App() {
       path: '/mycourses',
       element: (
         <><ScrollToTop /> <Navbar /> <TeacherCourses /> </>
+      )
+    },
+      {
+      path: '/quiz',
+      element: (
+        <><ScrollToTop /> <Navbar /> <QuizPage /> </>
       )
     },
     {
