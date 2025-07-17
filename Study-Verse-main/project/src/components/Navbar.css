@@ -10,14 +10,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -150,4 +152,35 @@
 
 .logout-btn:hover {
   color: #c0392b;
+}
+
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 30px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  
+} 
+
+@media (max-width: 480px) {
+  .nav-cart-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .profile-icon {
+    font-size: 30px;
+  }
+
+  .dropdown-menu {
+    width: 200px;
+  }
 }

@@ -53,11 +53,11 @@ const Teacher = () => {
     e.preventDefault();
 
     const newErrors = {};
-    Object.entries(formData).forEach(([key, value]) => {
-      if (!value || value.trim() === '') {
-        newErrors[key] = 'This field is required';
+    for (const field in formData) {
+      if ((field === 'image' && !formData[field]) || (field !== 'image' && formData[field].trim() === '')) {
+        newErrors[field] = 'This field is required';
       }
-    });
+    }
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
@@ -98,6 +98,7 @@ const Teacher = () => {
         }
       } catch (error) {
         alert('Error submitting course. Please try again.');
+        console.error('Add course error:', error);
       }
     }
   };

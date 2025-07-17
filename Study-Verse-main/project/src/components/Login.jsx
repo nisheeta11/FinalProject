@@ -13,7 +13,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-    // Trim inputs before sending
+  
     const payload = {
       email: data.email.trim(),
       password: data.password.trim(),
@@ -25,7 +25,7 @@ const Login = () => {
   password: data.password.trim(),
 };
 
-console.log('Login payload:', payload);  // Debug: Check payload
+console.log('Login payload:', payload);  
 
 const response = await fetch('http://localhost:5000/api/auth/login', {
   method: 'POST',

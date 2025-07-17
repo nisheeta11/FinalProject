@@ -6,8 +6,6 @@ import eLearn from '../assets/eLearn.jpg';
 import PopularCourses from './PopularCourses';
 import { NavLink } from 'react-router-dom'
 
-
-
 const Home = () => {
   return (
     <div>
@@ -24,11 +22,7 @@ const Home = () => {
               View Courses
               <img src={courseArrow} alt="Try Arrow" className="arrow-icon" />
             </button></NavLink>
-
         </div>
-
-
-
         <img className='img1' src={learningImg} alt="Learning" />
 
       </div>
