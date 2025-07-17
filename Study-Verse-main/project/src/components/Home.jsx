@@ -17,7 +17,7 @@ const Home = () => {
           <p>Your future starts with StudyVerse — Learn skills that shape tomorrow.</p>
           <p className="highlight">Master in-demand skills. Build your future. Succeed with confidence.</p>
 
-          <NavLink to="/uploaded-courses">
+          <NavLink to="/course">
             <button className='btn home-btn'>
               View Courses
               <img src={courseArrow} alt="Try Arrow" className="arrow-icon" />

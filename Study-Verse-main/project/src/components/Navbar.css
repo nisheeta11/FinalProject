@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* prevent wrapping */
 }
 
 .nav-links a {
@@ -34,11 +34,11 @@
   font-size: 14px;
   font-weight: 600;
   padding: 8px 12px;
-  margin-bottom: 35px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  white-space: nowrap;
 }
 
 .btn:hover {
@@ -73,7 +73,6 @@
 
 .tutor {
   background-color: #F57C00;
-  margin-bottom: 32px;
 }
 
 .tutor:hover {
@@ -154,33 +153,57 @@
   color: #c0392b;
 }
 
+/* ================== RESPONSIVE ================== */
+
 @media (max-width: 1024px) {
   .nav-container {
     padding: 0 30px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
     gap: 14px;
   }
 }
 
 @media (max-width: 768px) {
-  
-  
-} 
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
 
-@media (max-width: 480px) {
+  .btn,
+  .tutor {
+    font-size: 13px;
+    padding: 6px 10px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+
   .nav-cart-icon {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
 
   .profile-icon {
-    font-size: 30px;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-cart-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-icon {
+    font-size: 28px;
   }
 
   .dropdown-menu {
-    width: 200px;
+    width: 180px;
   }
 }

@@ -48,7 +48,7 @@ const Navbar = () => {
 
           {!user ? (
             <NavLink to="/login">
-              <button className="btn">Login</button>
+              <button className="btn log-in">Login</button>
             </NavLink>
           ) : (
             <div className="profile-dropdown">
