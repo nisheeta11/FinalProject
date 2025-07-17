@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import './TeacherDashboard.css';
 import { useNavigate } from 'react-router-dom';
 import CourseContext from '../Context/CourseContext';
@@ -6,26 +6,27 @@ import { AuthContext } from '../Context/AuthContext';
 import { FaVideo } from 'react-icons/fa';
 
 const Teacher = () => {
- const { addCourse } = useContext(CourseContext);
-const { user } = useContext(AuthContext);
-const navigate = useNavigate();
+  const { addCourse } = useContext(CourseContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
-useEffect(() => {
-  if (!user) {
-    navigate('/login');
-  }
-}, [user, navigate]);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
-
-  const [formData, setFormData] = useState({
+  const initialFormState = {
     courseName: '',
     description: '',
     price: '',
     image: '',
     language: '',
     author: user?.name || '',
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -36,6 +37,7 @@ useEffect(() => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+
     if (name === 'image' && files && files[0]) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -49,15 +51,13 @@ useEffect(() => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newErrors = {};
-    for (const field in formData) {
-      if (
-        (field === 'image' && !formData[field]) ||
-        (field !== 'image' && formData[field].trim() === '')
-      ) {
-        newErrors[field] = 'This field is required';
+    Object.entries(formData).forEach(([key, value]) => {
+      if (!value || value.trim() === '') {
+        newErrors[key] = 'This field is required';
       }
-    }
+    });
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
@@ -81,13 +81,23 @@ useEffect(() => {
 
         if (response.ok) {
           alert('Course submitted successfully!');
+          setFormData({
+            courseName: '',
+            description: '',
+            price: '',
+            image: '',
+            language: '',
+            author: user?.name || '',
+          });
+          if (fileInputRef.current) {
+            fileInputRef.current.value = null;
+          }
           navigate(`/course/${data.id}`);
         } else {
           alert('Failed to add course: ' + (data.error || 'Please try again.'));
         }
       } catch (error) {
         alert('Error submitting course. Please try again.');
-        console.error('Add course error:', error);
       }
     }
   };
@@ -143,8 +153,9 @@ useEffect(() => {
               type="file"
               id="image"
               name="image"
-              onChange={handleChange}
               accept="image/*"
+              onChange={handleChange}
+              ref={fileInputRef}
             />
             {errors.image && <small className="error">{errors.image}</small>}
           </div>

@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   background: #f8f9fa;
-  padding: 40px 20px;
+  padding: 10px 20px;
 }
 
 .teacher-dashboard-box {
@@ -89,7 +89,7 @@
 
 .course-form-container {
   background-color: #fff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -97,7 +97,7 @@
 }
 
 .course-form-container h2 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   color: navy;
   margin-bottom: 25px;
@@ -121,7 +121,7 @@
   padding: 10px 15px;
   border: 1px solid #ced4da;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 12px;
   transition: border-color 0.3s;
   appearance: none;
   background-color: #fff;

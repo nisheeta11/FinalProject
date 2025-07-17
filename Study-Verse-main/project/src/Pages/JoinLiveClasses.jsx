@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './JoinLiveClasses.css'; // optional for styling
+import './JoinLiveClasses.css';
 
 const JoinLiveClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -9,7 +9,8 @@ const JoinLiveClasses = () => {
     const fetchClasses = async () => {
       try {
         const res = await axios.get('/api/classes');
-        setClasses(res.data);
+        const sorted = res.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setClasses(sorted);
       } catch (err) {
         console.error('Error fetching classes:', err);
       }

@@ -32,15 +32,9 @@ const AddToCart = () => {
           <div className="card-box">
             {cartItems.map((item) => (
               <div className="cart-row" key={item.id}>
-                  <div className="cart-course-card">
                     <img src={item.image} className="cart-course-image" alt={item.title} />
-                  
-
-                  <div className="cart-Card-cont">
                     <h3>{item.title}</h3>
-                    <p><strong>Price:</strong> Rs. {item.price}</p>
-                  </div>
-                </div>
+               
 
                 <div className="cart-price-standalone">
                   <p>Rs. {item.price * (item.quantity || 1)}</p>
