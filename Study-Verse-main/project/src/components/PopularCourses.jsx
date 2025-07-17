@@ -67,7 +67,7 @@ const PopularCourses = () => {
       </div>
 
       <div className="pc-card-container">
-        {courses[selected].map((course, index) => (
+        {Array.isArray(courses[selected]) && courses[selected].map((course, index) => (
           <div className="pc-course-card" key={index}>
             <img src={course.image} className="pc-course-image" alt={course.title} />
             <div className="pc-cCard-cont">

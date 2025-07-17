@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './SearchContext.css';
 import search from '../assets/searchicon.svg';
 import coursesData from '../Data/CourseData';
-import categoryKeywordsMap from '../Data/categoryKeywordsMap';
 
 const allCourses = Object.values(coursesData).flat();
 
@@ -37,25 +36,12 @@ const Search = () => {
       return;
     }
 
-    const queryLower = input.trim().toLowerCase();
-
-    const matchedCategory = Object.entries(categoryKeywordsMap).find(([keyword]) =>
-      queryLower.includes(keyword)
-    );
-
-    let matches = [];
-
-    if (matchedCategory) {
-      const categoryName = matchedCategory[1];
-      matches = allCourses.filter(course => course.category === categoryName);
-    } else {
-      const grams = generate3Grams(input);
-      matches = allCourses.filter(course => {
-        const title = course.title.toLowerCase();
-        const description = course.description.toLowerCase();
-        return grams.some(gram => title.includes(gram) || description.includes(gram));
-      });
-    }
+    const grams = generate3Grams(input);
+    const matches = allCourses.filter(course => {
+      const title = course.title.toLowerCase();
+      const description = course.description.toLowerCase();
+      return grams.some(gram => title.includes(gram) || description.includes(gram));
+    });
 
     setResults(matches);
     setShowDropdown(true);
@@ -68,21 +54,10 @@ const Search = () => {
       return;
     }
 
-    const matchedCategory = Object.entries(categoryKeywordsMap).find(([keyword]) =>
-      queryLower.includes(keyword)
+    const foundCourses = allCourses.filter(course =>
+      course.title.toLowerCase().includes(queryLower) ||
+      course.description.toLowerCase().includes(queryLower)
     );
-
-    let foundCourses = [];
-
-    if (matchedCategory) {
-      const categoryName = matchedCategory[1];
-      foundCourses = allCourses.filter(course => course.category === categoryName);
-    } else {
-      foundCourses = allCourses.filter(course =>
-        course.title.toLowerCase().includes(queryLower) ||
-        course.description.toLowerCase().includes(queryLower)
-      );
-    }
 
     if (foundCourses.length > 0) {
       navigate(`/course/${foundCourses[0].id}`);
