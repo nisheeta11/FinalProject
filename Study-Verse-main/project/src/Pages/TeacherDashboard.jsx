@@ -53,11 +53,13 @@ const Teacher = () => {
     e.preventDefault();
 
     const newErrors = {};
-    for (const field in formData) {
-      if ((field === 'image' && !formData[field]) || (field !== 'image' && formData[field].trim() === '')) {
-        newErrors[field] = 'This field is required';
-      }
-    }
+    if (formData.courseName.trim() === '') newErrors.courseName = 'This field is required';
+    if (formData.description.trim() === '') newErrors.description = 'This field is required';
+    if (formData.price.trim() === '') newErrors.price = 'This field is required';
+    if (isNaN(formData.price)) newErrors.price = 'Price must be a valid number';
+    if (!formData.image) newErrors.image = 'Please upload an image';
+    if (formData.language.trim() === '') newErrors.language = 'This field is required';
+
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
@@ -80,7 +82,7 @@ const Teacher = () => {
         const data = await response.json();
 
         if (response.ok) {
-          alert('Course submitted successfully!');
+          alert('Thank you! Your course has been submitted successfully and is now under review.');
           setFormData({
             courseName: '',
             description: '',
@@ -92,13 +94,11 @@ const Teacher = () => {
           if (fileInputRef.current) {
             fileInputRef.current.value = null;
           }
-          navigate(`/course/${data.id}`);
         } else {
           alert('Failed to add course: ' + (data.error || 'Please try again.'));
         }
       } catch (error) {
         alert('Error submitting course. Please try again.');
-        console.error('Add course error:', error);
       }
     }
   };
@@ -129,24 +129,50 @@ const Teacher = () => {
       <div className="course-form-container">
         <h2>Hello {user?.name || 'Teacher'}, to get started please fill in the details...</h2>
         <form onSubmit={handleSubmit}>
-          {[
-            { id: 'courseName', label: 'Course Name', type: 'text' },
-            { id: 'description', label: 'Description', type: 'text' },
-            { id: 'price', label: 'Price', type: 'text' },
-            { id: 'language', label: 'Language', type: 'text' },
-          ].map(({ id, label, type }) => (
-            <div className="form-input" key={id}>
-              <label htmlFor={id}>{label}:</label>
-              <input
-                type={type}
-                id={id}
-                name={id}
-                value={formData[id]}
-                onChange={handleChange}
-              />
-              {errors[id] && <small className="error">{errors[id]}</small>}
-            </div>
-          ))}
+          <div className="form-input">
+            <label htmlFor="courseName">Course Name:</label>
+            <input
+              type="text"
+              id="courseName"
+              name="courseName"
+              value={formData.courseName}
+              onChange={handleChange}
+            />
+            {errors.courseName && <small className="error">{errors.courseName}</small>}
+          </div>
+          <div className="form-input">
+            <label htmlFor="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+            {errors.description && <small className="error">{errors.description}</small>}
+          </div>
+          <div className="form-input">
+            <label htmlFor="price">Price:</label>
+            <input
+              type="text"
+              id="price"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+            />
+            {errors.price && <small className="error">{errors.price}</small>}
+          </div>
+          <div className="form-input">
+            <label htmlFor="language">Language:</label>
+            <input
+              type="text"
+              id="language"
+              name="language"
+              value={formData.language}
+              onChange={handleChange}
+            />
+            {errors.language && <small className="error">{errors.language}</small>}
+          </div>
           <input type="hidden" name="author" value={formData.author} />
           <div className="form-input">
             <label htmlFor="image">Image:</label>
