@@ -47,7 +47,7 @@ const AdminPanel = () => {
             <li key={course._id}>
               <strong>{course.title}</strong> <br />
               <span><b>Description:</b> {course.description}</span><br />
-              <span><b>Price:</b> ${course.price}</span><br />
+              <span><b>Price:</b> Rs.{course.price}</span><br />
 
             </li>
 

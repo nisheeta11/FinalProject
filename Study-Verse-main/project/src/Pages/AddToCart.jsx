@@ -18,7 +18,6 @@ const AddToCart = () => {
       closeOnClick: true,
       pauseOnHover: true,
       theme: "light",
-
     });
   };
 
@@ -43,9 +42,7 @@ const AddToCart = () => {
                   </button>
                 </div>
               </div>
-
             ))}
-
           </div>
 
           <div className="cart-summary sticky-summary">
@@ -53,10 +50,8 @@ const AddToCart = () => {
             <NavLink to="/payment">
               <button className="checkout-btn">
                 Checkout
-
               </button>
             </NavLink>
-
           </div>
         </>
       )}

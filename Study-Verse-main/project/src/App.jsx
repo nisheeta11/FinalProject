@@ -17,7 +17,6 @@ import TeacherCourses from './Pages/TeacherCourses';
 import ScheduleClassForm from './Pages/ScheduleClassForm';
 import JoinLiveClass from './Pages/JoinLiveClasses';
 import AdminPanel from './Pages/AdminPanel';
-import UploadedCourses from './Pages/UploadedCourses';
 import QuizPage from './Pages/QuizPage';
 
 import { CourseProvider } from './Context/CourseContext';
@@ -115,13 +114,6 @@ function App() {
           : <Navigate to="/" replace />
       )
     },
-    {
-  path: '/uploaded-courses',
-  element: (
-        <><ScrollToTop /> <Navbar /> <UploadedCourses /></>
-     
-  )
-}
 
   ]);
 

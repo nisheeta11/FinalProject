@@ -1,13 +1,20 @@
-.container {
+
+.home-page {
   display: flex;
-  background-color: #f0f8ff;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 50px;
+  flex-direction: column;
   gap: 80px;
-  flex-wrap: wrap;
+  background-color: #f0f8ff;
+  box-sizing: border-box;
+  overflow-y: hidden;
 }
 
+.home-page-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  gap: 70px;
+}
 
 
 .img1 {
@@ -22,7 +29,7 @@
 .slogan {
   background-color: #d1e6f9;
   padding: 25px;
-  margin-top: 60px;
+  margin-top: 20px;
   border-left: 4px solid #00aaff;
   border-radius: 6px;
 }
@@ -64,8 +71,6 @@
   background-color: rgb(1, 1, 93);
 }
 
-
-
 .arrow-icon {
   width: 16px;
   height: 16px;
@@ -73,8 +78,15 @@
   filter: brightness(0) invert(1);
 }
 
+.home-page-mid{
+  background-color: white;
+}
 
-
+.home-page-mid-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .tag-line {
   display: flex;
@@ -99,6 +111,7 @@
 }
 
 .abt-cont {
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -139,141 +152,52 @@
   font-weight: 400;
   color: #333;
   line-height: 1.6;
-
 }
-
-
 
 
 
 @media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-    gap: 40px;
+  .home-page-top {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+    gap: 40px;
   }
 
   .slogan {
-    margin-top: 30px;
+    margin-top: 0;
     padding: 20px;
   }
 
-  .slogan h1 {
-    font-size: 28px;
-  }
-
-  .slogan p {
-    font-size: 16px;
-  }
-
   .tag-line {
-    font-size: 30px;
-    margin-top: 40px;
-    text-align: center;
+    font-size: 24px;
   }
 
   .about-info {
-    padding: 30px 20px;
-    gap: 30px;
-    align-items: center;
-    text-align: center;
-  }
-
-  .about-info img {
-    width: 20%;
-    max-width: 300px;
-    height: auto;
-  }
-
-  .abt-cont {
-    text-align: left;
+    flex-direction: column;
+    padding: 50px 5%;
+    gap: 40px;
   }
 
   .abt-cont h1 {
-    font-size: 14px;
-
+    font-size: 24px;
   }
-
-  .abt-cont p {
-    font-size: 10px;
-  }
-
-  .checklist {
-    font-size: 8px;
-  }
-
-.checklist li::before {
-  font-size: 12px;
-}
-
-
-  .home-btn {
-    font-size: 6px;
-
-  }
-
 }
 
 @media (max-width: 480px) {
-
-
-  .slogan {
-    margin-top: 20px;
-    padding: 10px;
-   
-  }
-
   .slogan h1 {
-    font-size: 15px;
-  
-  }
-
-  .slogan p {
-    font-size: 10px;
-   
+    font-size: 24px;
   }
 
   .tag-line {
-    font-size: 20px;
-   
+    font-size: 20.8px;
   }
- 
-
-  .about-info {
-    align-items: flex-start;
-  }
-
-  .about-info img {
-    display: none;
-  }
-
 
   .abt-cont h1 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .abt-cont p {
-    font-size: 10px;
-    line-height: 1.4;
-  }
-
-  .checklist {
-    font-size: 9px;
-    padding-left: 18px;
-  }
-
-  .checklist li::before {
-    font-size: 8px;
+    font-size: 20.8px;
   }
 
   .home-btn {
-    font-size: 8px;
-    padding: 5px 12px;
-  }
-
-  .arrow-icon{
-    width: 10px;
+    font-size: 13px;
+    padding: 8px 12px;
   }
 }

@@ -86,3 +86,53 @@
   overflow: hidden;
   transition: transform 0.2s ease;
 }
+
+
+@media (max-width: 768px) {
+  .teacher-courses-container {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .course-info h3 {
+    font-size: 1rem;
+  }
+
+  .course-info p {
+    font-size: 0.95rem;
+  }
+
+  .course-image {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-image {
+    height: 130px;
+  }
+
+  .course-info h3 {
+    font-size: 1rem;
+  }
+
+  .course-info p {
+    font-size: 0.9rem;
+  }
+}
