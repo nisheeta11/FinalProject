@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import quizData from '../Data/quizData';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import axios from 'axios';
 
 const QuizPage = () => {
   const categories = Object.keys(quizData);
@@ -11,25 +12,44 @@ const QuizPage = () => {
   const questions = quizData[selectedCategory];
 
   const handleSelectOption = (qIndex, option) => {
-    if (!submitted) {
+    if (!submitted && answers[qIndex] === undefined) {
       setAnswers({ ...answers, [qIndex]: option });
     }
-  };
-
-  const handleSubmit = () => {
-    setSubmitted(true);
-  };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    setAnswers({});
-    setSubmitted(false);
   };
 
   const calculateScore = () => {
     return questions.reduce((score, q, i) => {
       return answers[i] === q.answer ? score + 1 : score;
     }, 0);
+  };
+
+  const handleSubmit = async () => {
+    setSubmitted(true);
+
+    const score = calculateScore();
+
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const email = storedUser?.email;
+
+    const payload = {
+      category: selectedCategory,
+      answers,
+      score,
+      user: email || "anonymous@example.com"
+    };
+
+    try {
+      await axios.post('http://localhost:5000/api/quiz/submit', payload);
+      alert('Your quiz result has been saved!');
+    } catch (error) {
+      alert('Failed to save quiz result.');
+    }
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setAnswers({});
+    setSubmitted(false);
   };
 
   return (
@@ -90,7 +110,7 @@ const QuizPage = () => {
                       key={i}
                       className={className}
                       onClick={() => handleSelectOption(index, option)}
-                      disabled={submitted}
+                      disabled={submitted || answers[index] !== undefined}
                     >
                       {option} <span className="quiz-icon">{icon}</span>
                     </button>
