@@ -31,7 +31,7 @@ const transactionSchema = new mongoose.Schema({
   transactionId: { 
     type: String, 
     required: true, 
-    unique: true  // helps prevent duplicate transaction entries
+    unique: true  
   },
   date: { 
     type: Date, 

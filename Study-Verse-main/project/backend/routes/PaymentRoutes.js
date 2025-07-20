@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const router = express.Router();
 
-// Route to create Stripe checkout session
+
 router.post('/checkout', async (req, res) => {
   try {
     const { price, method } = req.body;
@@ -44,7 +44,7 @@ router.post('/checkout', async (req, res) => {
   }
 });
 
-// Route to save transaction data after successful payment
+
 router.post('/save-transaction', handlePaymentSuccess);
 
 module.exports = router;

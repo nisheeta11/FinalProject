@@ -21,6 +21,7 @@ import QuizPage from './Pages/QuizPage';
 
 import { CourseProvider } from './Context/CourseContext';
 import { AuthContext } from './Context/AuthContext';
+import StudentRanking from './Pages/StudentRanking';
 
 
 function App() {
@@ -104,6 +105,12 @@ function App() {
       path: '/quiz',
       element: (
         <><ScrollToTop /> <Navbar /> <QuizPage /> </>
+      )
+    },
+      {
+      path: '/ranking',
+      element: (
+        <><ScrollToTop /> <Navbar /> <StudentRanking /> </>
       )
     },
     {

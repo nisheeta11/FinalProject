@@ -5,6 +5,7 @@ import courseArrow from '../assets/getarrow.svg';
 import eLearn from '../assets/eLearn.jpg';
 import PopularCourses from './PopularCourses';
 import { NavLink } from 'react-router-dom'
+import { FaTrophy } from 'react-icons/fa';
 
 const Home = () => {
   return (
@@ -56,7 +57,10 @@ const Home = () => {
                 </button>
               </NavLink>
             </div>
-            
+            <NavLink to="/ranking" className="ranking-btn" title="View Rankings">
+              <FaTrophy />
+            </NavLink>
+
           </div>
         </div>
         <PopularCourses />
