@@ -1,0 +1,65 @@
+.ranking-container {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  background-color: #f7f9fc;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.ranking-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+  color: #34495e;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  background-color: transparent;
+}
+
+.ranking-table thead th {
+  background-color: #2980b9;
+  color: #ecf0f1;
+  font-weight: 600;
+  padding: 14px 20px;
+  text-align: left;
+  user-select: none;
+}
+
+.ranking-table tbody tr {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ranking-table tbody tr:hover {
+  background-color: #d6eaf8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.ranking-table tbody td {
+  padding: 15px 20px;
+  color: #2c3e50;
+  font-weight: 500;
+  border: none;
+}
+
+.ranking-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.loading, .error {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  margin-top: 3rem;
+  font-style: italic;
+}

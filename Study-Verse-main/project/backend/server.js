@@ -12,6 +12,8 @@ const transactionRoutes = require('./routes/transaction');
 const scheduleRoutes = require('./routes/scheduleClass');
 const adminRoutes = require('./routes/admin');
 const quizResultRoutes = require('./routes/quizResults');
+const studentRankingRoutes = require('./routes/studentRankingRoutes');
+
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/classes', scheduleRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/quiz', quizResultRoutes);
+app.use('/api/ranking', studentRankingRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('Server is running!');
