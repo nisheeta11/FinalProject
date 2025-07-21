@@ -18,21 +18,29 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar'>
-      <nav className='nav-container'>
+    <div className="navbar">
+      <nav className="nav-container">
         <div className="logo">
-          {user?.role !== 'admin' && (
-            <NavLink to="/">
-              <span className="brand-name">StudyVerse</span>
-            </NavLink>
-          )}
+          <NavLink to="/">
+            <span className="brand-name">StudyVerse</span>
+          </NavLink>
         </div>
 
         <div className="nav-links">
-          {user?.role !== 'admin' && (
+          {user?.role === 'admin' && (
+            <NavLink to="/admin">
+              <button className="btn admin">Admin Panel</button>
+            </NavLink>
+          )}
+
+      {user?.role === 'tutor' && (
+            <NavLink to="/dashboard">
+              <button className="btn tutor">Tutor Dashboard</button>
+            </NavLink>
+          )}
+          {user?.role === 'student' && (
             <>
               <Search />
-
               <NavLink to="/addtocart" className="cart-wrapper">
                 <img src={cartIcon} className="nav-cart-icon" alt="cart" />
                 {cartItems.length > 0 && (
@@ -40,23 +48,28 @@ const Navbar = () => {
                 )}
               </NavLink>
 
-              <NavLink to="/teacher">
-                <button className="btn tutor">For Tutor</button>
-              </NavLink>
+              <button className="btn tutor" onClick={() => navigate('/teacher')}>
+                For Tutor
+              </button>
             </>
           )}
-
-          {!user ? (
+      
+          {!user && (
             <NavLink to="/login">
-              <button className="btn log-in">Login</button>
+              <button className="btn log-in">Get Started</button>
             </NavLink>
-          ) : (
+          )}
+
+        
+          {user && (
             <div className="profile-dropdown">
               <FaUserCircle className="profile-icon" />
               <div className="dropdown-menu">
                 <p><strong>{user.name}</strong></p>
                 <p className="email">{user.email}</p>
-                <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                <button className="logout-btn" onClick={handleLogout}>
+                  Logout
+                </button>
               </div>
             </div>
           )}

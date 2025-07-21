@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <AuthProvider>
       <CourseProvider>
         <CartProvider>
@@ -19,5 +19,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </CartProvider>
       </CourseProvider>
     </AuthProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

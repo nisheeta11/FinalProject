@@ -1,19 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const { user } = useContext(AuthContext);
   const location = useLocation();
-  const alerted = useRef(false);
 
   useEffect(() => {
-    if (!isAuthenticated && !alerted.current) {
+    if (!user) {
       alert('Please Login First');
-      alerted.current = true;
     }
-  }, [isAuthenticated]);
+  }, [user]);
 
-  if (!isAuthenticated) {
+  if (!user) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 

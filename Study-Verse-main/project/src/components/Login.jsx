@@ -10,28 +10,28 @@ const Login = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
+
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-  
-    const payload = {
-      email: data.email.trim(),
-      password: data.password.trim(),
-    };
-
     try {
-     const payload = {
-  email: data.email.trim(),
-  password: data.password.trim(),
-};
+      await delay(1500);
 
-console.log('Login payload:', payload);  
+      const payload = {
+        email: data.email.trim(),
+        password: data.password.trim(),
+      };
 
-const response = await fetch('http://localhost:5000/api/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(payload),
-});
+      console.log('Login payload:', payload);
+
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
       const result = await response.json();
 
       if (response.ok) {

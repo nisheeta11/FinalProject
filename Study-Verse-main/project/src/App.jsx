@@ -31,95 +31,63 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-        <><ScrollToTop /> <Navbar /> <Home /> <Footer /></>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <Home /> <Footer /></> )
     },
     {
       path: '/login',
-      element: (
-        <><ScrollToTop /> <Login /></>
-      )
+      element: ( <><ScrollToTop /> <Login /></> )
     },
     {
       path: '/signup',
-      element: (
-        <><ScrollToTop /> <Signup /></>
-      )
+      element: ( <><ScrollToTop /> <Signup /></> )
     },
     {
       path: '/about',
-      element: (
-        <><ScrollToTop /> <Navbar /> <About /> <Footer /></>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <About /> <Footer /></> )
     },
     {
       path: '/course',
-      element: (
-        <><ScrollToTop /> <Navbar /> <PopularCourses /></>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <PopularCourses /></> )
     },
     {
       path: '/course/:id',
-      element: (
-        <><ScrollToTop /> <Navbar /> <Course /></>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <Course /></> )
     },
     {
       path: '/addtocart',
-      element: (
-        <><ScrollToTop /> <Navbar /> <AddToCart /></>
-      )
+      element: ( <><ScrollToTop /><Navbar /><AddToCart /></> )
     },
     {
       path: '/payment',
-      element: (
-        <><ScrollToTop /> <ProtectedRoute><Payment /></ProtectedRoute></>
-      )
+      element: ( <><ScrollToTop /> <ProtectedRoute><Payment /></ProtectedRoute></> )
     },
     {
       path: '/teacher',
-      element: (
-        <><ScrollToTop /> <Navbar /> <ProtectedRoute><TeacherDashboard /></ProtectedRoute></>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <TeacherDashboard /></> )
     },
     {
       path: '/liveclass',
-      element: (
-        <><ScrollToTop /><ScheduleClassForm /></>
-      )
+      element: ( <><ScrollToTop /><ScheduleClassForm /></> )
     },
     {
       path: '/join-live-classes',
-      element: (
-        <><ScrollToTop /> <Navbar /> <JoinLiveClass /></>
-      )
+      element: ( <><ScrollToTop /> <ProtectedRoute><Navbar /></ProtectedRoute> <JoinLiveClass /></> )
     },
     {
       path: '/mycourses',
-      element: (
-        <><ScrollToTop /> <Navbar /> <TeacherCourses /> </>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <TeacherCourses /> </> )
     },
       {
       path: '/quiz',
-      element: (
-        <><ScrollToTop /> <Navbar /> <QuizPage /> </>
-      )
+      element: ( <><ScrollToTop /> <ProtectedRoute><Navbar /> </ProtectedRoute><QuizPage /> </> )
     },
       {
       path: '/ranking',
-      element: (
-        <><ScrollToTop /> <Navbar /> <StudentRanking /> </>
-      )
+      element: ( <><ScrollToTop /> <Navbar /> <StudentRanking /> </> )
     },
     {
       path: '/admin',
-      element: (
-        isAdmin
-          ? <><ScrollToTop /><Navbar /><AdminPanel /></>
-          : <Navigate to="/" replace />
-      )
+      element: (isAdmin? <><ScrollToTop /><Navbar /><AdminPanel /></>: <Navigate to="/" replace /> )
     },
 
   ]);
