@@ -92,3 +92,20 @@
   color: #888;
   cursor: default;
 }
+
+@media (max-width: 768px){
+  .search-container {
+  width: 50%;
+  max-width: 200px;
+  margin: 15px auto;
+  z-index: 10;
+}
+
+}
+
+@media (max-width: 468px){
+  .search-container {
+  display: none;
+}
+
+}

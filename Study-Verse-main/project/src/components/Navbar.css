@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: nowrap; /* prevent wrapping */
+  flex-wrap: nowrap; 
 }
 
 .nav-links a {
@@ -153,7 +153,6 @@
   color: #c0392b;
 }
 
-/* ================== RESPONSIVE ================== */
 
 @media (max-width: 1024px) {
   .nav-container {
@@ -190,18 +189,32 @@
 }
 
 @media (max-width: 480px) {
+  .navbar{
+    justify-content: space-between;
+    overflow-x: hidden;
+
+  }
   .nav-links {
-    gap: 8px;
+    gap: 10px;
   }
 
   .nav-cart-icon {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 
   .profile-icon {
-    font-size: 28px;
+    font-size: 18px;
   }
+  
+  .btn,
+  .tutor {
+    font-size: 7px;
+    padding: 2px 4px;
+    height: 20px;
+    margin-bottom: 0;
+  }
+
 
   .dropdown-menu {
     width: 180px;
