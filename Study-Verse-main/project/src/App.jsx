@@ -18,10 +18,12 @@ import ScheduleClassForm from './Pages/ScheduleClassForm';
 import JoinLiveClass from './Pages/JoinLiveClasses';
 import AdminPanel from './Pages/AdminPanel';
 import QuizPage from './Pages/QuizPage';
+import StudentRanking from './Pages/StudentRanking';
+import PurchasedCourses from './Pages/PurchasedCourses';
 
 import { CourseProvider } from './Context/CourseContext';
 import { AuthContext } from './Context/AuthContext';
-import StudentRanking from './Pages/StudentRanking';
+
 
 
 function App() {
@@ -60,6 +62,10 @@ function App() {
     {
       path: '/payment',
       element: ( <><ScrollToTop /> <ProtectedRoute><Payment /></ProtectedRoute></> )
+    },
+     {
+      path: '/purchasedcourses',
+      element: ( <><ScrollToTop /> <Navbar /> <PurchasedCourses/> </> )
     },
     {
       path: '/teacher',

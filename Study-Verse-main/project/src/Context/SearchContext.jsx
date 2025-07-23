@@ -1,7 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SearchContext.css';
-import search from '../assets/searchicon.svg';
 import coursesData from '../Data/CourseData';
 
 const allCourses = Object.values(coursesData).flat();
@@ -19,7 +17,7 @@ const generate3Grams = (input) => {
   return grams;
 };
 
-const Search = () => {
+const useSearchContext = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -48,15 +46,15 @@ const Search = () => {
   };
 
   const handleSearchClick = () => {
-    const queryLower = query.trim().toLowerCase();
-    if (queryLower.length < 3) {
+    const trimmed = query.trim().toLowerCase();
+    if (trimmed.length < 3) {
       alert('Please enter at least 3 characters to search.');
       return;
     }
 
     const foundCourses = allCourses.filter(course =>
-      course.title.toLowerCase().includes(queryLower) ||
-      course.description.toLowerCase().includes(queryLower)
+      course.title.toLowerCase().includes(trimmed) ||
+      course.description.toLowerCase().includes(trimmed)
     );
 
     if (foundCourses.length > 0) {
@@ -86,53 +84,16 @@ const Search = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  return (
-    <div className="search-container" ref={containerRef}>
-      <div className="search-box">
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Search courses..."
-            className="search-input"
-            value={query}
-            onChange={handleInputChange}
-            onFocus={() => query.length >= 3 && results.length > 0 && setShowDropdown(true)}
-            autoComplete="off"
-          />
-          {showDropdown && (
-            <div className="search-dropdown">
-              {results.length > 0 ? (
-                results.map(course => (
-                  <div
-                    key={course.id}
-                    className="dropdown-item"
-                    onClick={() => handleSelect(course.id)}
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleSelect(course.id);
-                    }}
-                  >
-                    {course.title}
-                  </div>
-                ))
-              ) : (
-                <div className="dropdown-item no-results">No matching courses found.</div>
-              )}
-            </div>
-          )}
-        </div>
-        <button
-          className="search-btn"
-          onClick={handleSearchClick}
-          aria-label="Search"
-          type="button"
-          disabled={query.trim().length < 3}
-        >
-          <img className="search-icon" src={search} alt="search icon" />
-        </button>
-      </div>
-    </div>
-  );
+  return {
+    query,
+    results,
+    showDropdown,
+    containerRef,
+    handleInputChange,
+    handleSearchClick,
+    handleSelect,
+    setShowDropdown,
+  };
 };
 
-export default Search;
+export default useSearchContext;
