@@ -7,5 +7,7 @@ const CourseSchema = new mongoose.Schema({
   image: { type: String, required: true },
   language: { type: String, required: true },
   author: { type: String, required: true },
+  uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
+
 module.exports = mongoose.models.Course || mongoose.model('Course', CourseSchema);

@@ -70,6 +70,7 @@ const Teacher = () => {
         image: formData.image,
         language: formData.language,
         author: formData.author,
+        uploadedBy: user?._id,
       };
 
       try {

@@ -1,110 +1,120 @@
 .admin-panel {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 2rem 3rem;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
- cursor: pointer;
-  transition: all 0.3s ease;
-  user-select: none;
+  max-width: 1000px;
+  margin: 48px auto;
+  color: #2c3e50;
+  background-color: #f9fafb;
+  padding: 32px 48px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .admin-panel h1 {
-  font-size: 2.4rem;
-  margin-bottom: 2.5rem;
-  color: #2c3e50;
   text-align: center;
-  border-bottom: 2px solid #eaeaea;
-  padding-bottom: 1rem;
-  letter-spacing: 0.5px;
-}
-
-.admin-panel section {
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px dashed #dcdcdc;
+  margin-bottom: 48px;
+  font-weight: 400;
+  font-size: 40px;
+  color: #34495e;
 }
 
 .admin-panel h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1.2rem;
-  color: #007bff;
-  position: relative;
-  padding-left: 14px;
+  border-left: 4px solid #2980b9;
+  padding-left: 12px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-size: 28px;
+  color: #2980b9;
+  letter-spacing: 0.03em;
 }
 
-.admin-panel h2::before {
-  content: '▍';
-  color: #007bff;
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.4rem;
+.user-card {
+  background-color: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding: 24px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
 }
 
-.admin-panel ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0;
+.user-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.admin-panel li {
-  background-color: #fdfdfd;
-  border: 1px solid #e6e6e6;
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: #333;
+.user-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-weight: 400;
+  font-size: 19px;
+  color: #2c3e50;
 }
 
-.admin-panel li:hover {
-  background-color: #f5faff;
-  transform: translateY(-2px);
-  border-color: #cce5ff;
+.toggle-btn {
+  background-color: #2980b9;
+  border: none;
+  color: #fff;
+  padding: 6px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(41, 128, 185, 0.4);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.admin-panel li span {
-  font-weight: 500;
+.toggle-btn:hover {
+  background-color: #1f6391;
+  box-shadow: 0 4px 12px rgba(31, 99, 145, 0.5);
+}
+
+.user-details {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.6;
+  border-top: 1px solid #ecf0f1;
+  padding-top: 16px;
+}
+
+.nested-section {
+  margin-top: 24px;
+}
+
+.nested-section h4 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #34495e;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.nested-section ul {
+  list-style-type: disc;
+  margin-left: 27px;
   color: #555;
 }
 
-.admin-panel li .tag {
-  background-color: #007bff;
-  color: #fff;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  margin-left: 10px;
+.nested-section ul li {
+  margin-bottom: 12px;
 }
 
+.nested-section ul li small {
+  font-style: italic;
+  color: #7f8c8d;
+}
 
-@media screen and (max-width: 992px) {
+@media (max-width: 720px) {
   .admin-panel {
-    padding: 1.5rem;
+    padding: 24px 24px;
   }
 
-  .admin-panel h1 {
-    font-size: 2rem;
-  }
-
-  .admin-panel h2 {
-    font-size: 1.4rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .admin-panel li {
+  .user-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .admin-panel li .tag {
-    margin-top: 6px;
+  .toggle-btn {
+    margin-top: 8px;
   }
 }

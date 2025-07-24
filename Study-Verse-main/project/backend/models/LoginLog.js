@@ -20,7 +20,7 @@ const loginLogSchema = new mongoose.Schema({
   },
 });
 
-// Optional: Add an index to optimize retrieval by time or user
+
 loginLogSchema.index({ userId: 1, loginTime: -1 });
 
 module.exports = mongoose.model('LoginLog', loginLogSchema);

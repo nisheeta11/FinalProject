@@ -6,9 +6,10 @@ const AdminPanel = () => {
   const [users, setUsers] = useState([]);
   const [courses, setCourses] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [expandedUserIds, setExpandedUserIds] = useState([]);
 
   useEffect(() => {
-    const fetchAdminData = async () => {
+    const fetchData = async () => {
       try {
         const [usersRes, coursesRes, classesRes] = await Promise.all([
           axios.get('/api/admin/users'),
@@ -18,52 +19,94 @@ const AdminPanel = () => {
         setUsers(usersRes.data);
         setCourses(coursesRes.data);
         setClasses(classesRes.data);
-      } catch (err) {
-        console.error('Failed to load admin data:', err);
+
+        console.log('Fetched Courses:', coursesRes.data);
+      } catch (error) {
+        console.error('Admin fetch error:', error);
       }
     };
-
-    fetchAdminData();
+    fetchData();
   }, []);
+
+  const toggleUserDetails = (id) => {
+    setExpandedUserIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
 
   return (
     <div className="admin-panel">
-      
       <h1>Admin Dashboard</h1>
 
       <section>
         <h2>Users</h2>
-        <ul>
-          {users.map(user => (
-            <li key={user._id}>{user.name} - {user.email} ({user.role})</li>
-          ))}
-        </ul>
-      </section>
+        {users.map(user => {
+          const isExpanded = expandedUserIds.includes(user._id);
 
-      <section>
-        <h2>Courses</h2>
-        <ul>
-          {courses.map(course => (
-            <li key={course._id}>
-              <strong>{course.title}</strong> <br />
-              <span><b>Description:</b> {course.description}</span><br />
-              <span><b>Price:</b> Rs.{course.price}</span><br />
+          // Match uploaded courses
+          const userCourses = courses.filter(course => {
+            const uploaderId = typeof course.uploadedBy === 'object'
+              ? course.uploadedBy._id
+              : course.uploadedBy;
+            return String(uploaderId) === String(user._id);
+          });
 
-            </li>
+          // Match scheduled classes
+          const userClasses = classes.filter(cls =>
+            cls.teacher && String(cls.teacher._id) === String(user._id)
+          );
 
-          ))}
-        </ul>
-      </section>
+          return (
+            <div key={user._id} className="user-card">
+              <div className="user-header">
+                <span><strong>{user.name}</strong> — {user.email}</span>
+                <button className="toggle-btn" onClick={() => toggleUserDetails(user._id)}>
+                  {isExpanded ? 'Hide Details' : 'Show Details'}
+                </button>
+              </div>
 
-      <section>
-        <h2>Live Classes</h2>
-        <ul>
-          {classes.map(cls => (
-            <li key={cls._id}>
-              {cls.title} - {new Date(cls.date).toLocaleString()} (Instructor: {cls.teacher?.name})
-            </li>
-          ))}
-        </ul>
+              {isExpanded && (
+                <div className="user-details">
+                  <p><b>Joined:</b> {new Date(user.createdAt).toLocaleDateString()}</p>
+
+                  {userCourses.length > 0 && (
+                    <div className="nested-section">
+                      <h4>Uploaded Courses ({userCourses.length})</h4>
+                      <ul>
+                        {userCourses.map(course => {
+                          console.log('Course:', course);
+                          console.log('UploadedBy:', course.uploadedBy);
+                          console.log('UserId:', user._id);
+
+                          return (
+                            <li key={course._id}>
+                              <strong>{course.title}</strong><br />
+                              <small>{course.description}</small><br />
+                              <span>Price: Rs.{course.price}</span> | <span>Language: {course.language}</span> | <span>Author: {course.author}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+
+                  {userClasses.length > 0 && (
+                    <div className="nested-section">
+                      <h4>Scheduled Live Classes ({userClasses.length})</h4>
+                      <ul>
+                        {userClasses.map(cls => (
+                          <li key={cls._id}>
+                            <strong>{cls.title}</strong> — {new Date(cls.date).toLocaleString()}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
     </div>
   );

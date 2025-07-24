@@ -3,12 +3,12 @@ const Transaction = require('../models/Transaction');
 
 const router = express.Router();
 
-// Create a new transaction
+
 router.post('/', async (req, res) => {
   try {
     const { user, course, amount, method, status, transactionId } = req.body;
 
-    // Validate required fields
+
     if (!user || !course || !amount || !method || !transactionId) {
       return res.status(400).json({ error: 'User, course, amount, method, and transactionId are required.' });
     }
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all transactions with populated user and course info
+
 router.get('/', async (req, res) => {
   try {
     const transactions = await Transaction.find()

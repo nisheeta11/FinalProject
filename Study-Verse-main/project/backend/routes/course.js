@@ -1,19 +1,26 @@
 const express = require('express');
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 const router = express.Router();
 const Course = require('../models/Course');
 
-
 router.post('/', async (req, res) => {
   try {
-    const { title, description, price, image, language, author } = req.body;
-    if (!title || !description || !price || !image || !language || !author) {
-      return res.status(400).json({ error: 'All fields are required' });
+    const { title, description, price, image, language, author, uploadedBy } = req.body;
+
+ 
+    if (!title || !description || !price || !image || !language || !author || !uploadedBy) {
+      return res.status(400).json({ error: 'All fields including uploadedBy are required' });
     }
 
-    const newCourse = new Course({ title, description, price, image, language, author });
+  
+    if (!mongoose.Types.ObjectId.isValid(uploadedBy)) {
+      return res.status(400).json({ error: 'Invalid uploadedBy user ID' });
+    }
+
+    const newCourse = new Course({ title, description, price, image, language, author, uploadedBy });
     const savedCourse = await newCourse.save();
-    res.status(201).json({ id: savedCourse._id });
+
+    res.status(201).json(savedCourse);
   } catch (error) {
     console.error('Error saving course:', error);
     res.status(500).json({ error: 'Server error' });
@@ -30,9 +37,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.delete('/:id', async (req, res) => {
-   console.log('Deleting course ID:', req.params.id); 
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ error: 'Invalid course ID' });
   }
@@ -44,7 +49,6 @@ router.delete('/:id', async (req, res) => {
     }
     res.json({ message: 'Course deleted successfully' });
   } catch (err) {
-    console.error('Delete error:', err);
     res.status(500).json({ error: 'Failed to delete course' });
   }
 });

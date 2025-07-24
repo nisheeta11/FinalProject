@@ -10,7 +10,6 @@ const handlePaymentSuccess = async (req, res) => {
       return res.status(400).json({ message: 'Missing required transaction details.' });
     }
 
-    // Create a new transaction
     const transaction = new Transaction({
       user: userId,
       course: courseId,

@@ -39,7 +39,7 @@ const transactionSchema = new mongoose.Schema({
   }
 });
 
-// Optional: index on user and date for faster queries on user history
+
 transactionSchema.index({ user: 1, date: -1 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Class = require('../models/Class');
 
-// POST: Schedule a class
+
 router.post('/', async (req, res) => {
   try {
     const newClass = new Class(req.body);
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET: Get all scheduled classes (for students)
+
 router.get('/', async (req, res) => {
   try {
     const classes = await Class.find().populate('teacher', 'name');
