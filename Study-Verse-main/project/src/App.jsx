@@ -20,9 +20,11 @@ import AdminPanel from './Pages/AdminPanel';
 import QuizPage from './Pages/QuizPage';
 import StudentRanking from './Pages/StudentRanking';
 import PurchasedCourses from './Pages/PurchasedCourses';
+import AllCourses from './components/AllCourses';
 
 import { CourseProvider } from './Context/CourseContext';
 import { AuthContext } from './Context/AuthContext';
+
 
 
 
@@ -49,7 +51,7 @@ function App() {
     },
     {
       path: '/course',
-      element: ( <><ScrollToTop /> <Navbar /> <PopularCourses /></> )
+      element: ( <><ScrollToTop /> <Navbar /> <PopularCourses /> <AllCourses/></> )
     },
     {
       path: '/course/:id',

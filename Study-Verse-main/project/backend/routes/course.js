@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const courses = await Course.find({});
+    const courses = await Course.find().populate('uploadedBy', 'name email'); 
     res.json(courses);
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
