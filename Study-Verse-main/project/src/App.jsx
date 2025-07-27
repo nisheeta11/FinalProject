@@ -21,6 +21,7 @@ import QuizPage from './Pages/QuizPage';
 import StudentRanking from './Pages/StudentRanking';
 import PurchasedCourses from './Pages/PurchasedCourses';
 import AllCourses from './components/AllCourses';
+import PaymentSuccess from './Pages/PaymentSuccess';
 
 import { CourseProvider } from './Context/CourseContext';
 import { AuthContext } from './Context/AuthContext';
@@ -64,6 +65,10 @@ function App() {
     {
       path: '/payment',
       element: ( <><ScrollToTop /> <ProtectedRoute><Payment /></ProtectedRoute></> )
+    },
+     {
+      path: '/payment-success',
+      element: ( <><ScrollToTop /> <PaymentSuccess /> </> )
     },
      {
       path: '/purchasedcourses',

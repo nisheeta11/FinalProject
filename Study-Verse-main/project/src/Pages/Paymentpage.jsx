@@ -13,11 +13,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const Paymentpage = () => {
   const { totalPrice } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-  const { courses } = useContext(CourseContext);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const buyNowCourse = location.state?.course;
   const buyNowPrice = location.state?.price;
   const finalPrice = buyNowPrice ? parseFloat(buyNowPrice) : totalPrice;
 
@@ -46,11 +44,9 @@ const Paymentpage = () => {
     try {
       const res = await fetch('http://localhost:5000/api/payment/checkout', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          price: Math.round(finalPrice),
+          price: finalPrice,
           method: selectedMethod,
         }),
       });
@@ -58,19 +54,19 @@ const Paymentpage = () => {
       const data = await res.json();
 
       if (data.url) {
-        // Simulate only storing basic data for success message
+        // Save info if needed
         localStorage.setItem('userId', user._id);
         localStorage.setItem('email', user.email);
         localStorage.setItem('amount', finalPrice.toString());
         localStorage.setItem('method', selectedMethod);
-        localStorage.setItem('paymentIntentId', 'demo_payment_' + Date.now());
 
+        // Redirect to Stripe hosted checkout page
         window.location.href = data.url;
       } else {
-        alert('Something went wrong with payment redirection.');
+        alert(data.error || 'Failed to start payment.');
       }
-    } catch (err) {
-      console.error('Payment error:', err);
+    } catch (error) {
+      console.error('Payment error:', error);
       alert('Payment failed. Try again later.');
     }
   };

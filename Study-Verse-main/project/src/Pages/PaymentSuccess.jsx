@@ -1,11 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AiOutlineCheckCircle } from 'react-icons/ai'; 
+import './PaymentSuccess.css';
 
 const PaymentSuccess = () => {
+  const navigate = useNavigate();
+
+  const handleOk = () => {
+    navigate('/purchasedcourses');
+  };
+
   return (
-    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-      <h1>✅ Payment Successful!</h1>
+    <div className="payment-success-container">
+      <AiOutlineCheckCircle className="check-icon" />
+      <h1>Payment Successful!</h1>
       <p>Thank you for your purchase.</p>
-      <p>Your transaction was successful. You’ll receive course access shortly.</p>
+      <button className="ok-button" onClick={handleOk}>
+        OK
+      </button>
     </div>
   );
 };

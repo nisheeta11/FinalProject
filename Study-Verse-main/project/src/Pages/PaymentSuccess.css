@@ -1,47 +1,31 @@
 .payment-success-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
+  justify-content: center;  
+  align-items: center;     
+  height: 100vh;            
   text-align: center;
-  color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 40px auto;
-  max-width: 660px;
-
+  padding: 0 1rem;
 }
 
 .check-icon {
+  color: green;
   font-size: 5rem;
-  margin-bottom: 20px;
-  color: #28a745; 
+  margin-bottom: 1rem;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-p {
+.ok-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
   font-size: 1rem;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.success-btn {
-  background-color: #28a745;
+  background-color: green;
   color: white;
   border: none;
-  padding: 10px 28px;
-  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
-.success-btn:hover {
-  background-color: #218838;
+.ok-button:hover {
+  background-color: #006400; 
 }
