@@ -136,6 +136,19 @@
   margin-left: 14px;
 }
 
+.courses-link {
+  margin-left: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #d5e6f8;
+ 
+}
+
+.courses-link:hover{
+  transform: translateY(0);
+  color:white ;
+}
+
 .profile-btn {
   margin: 10px 16px 6px;
   background: none;

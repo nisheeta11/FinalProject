@@ -36,6 +36,9 @@ const Navbar = () => {
           <NavLink to="/">
             <span className="brand-name">StudyVerse</span>
           </NavLink>
+          <NavLink to="/course" className="courses-link">
+            Courses
+          </NavLink>
         </div>
 
         <div className="nav-links">
@@ -119,12 +122,14 @@ const Navbar = () => {
               <div className="dropdown-menu">
                 <p><strong>{user.name}</strong></p>
                 <p className="email">{user.email}</p>
-                <button
-                  className="profile-btn"
-                  onClick={() => navigate('/purchasedcourses')}
-                >
-                  My Courses
-                </button>
+                {user.role === 'student' && (
+                  <button
+                    className="profile-btn"
+                    onClick={() => navigate('/purchasedcourses')}
+                  >
+                    My Courses
+                  </button>
+                )}
                 <button className="profile-btn" onClick={handleLogout}>
                   Logout
                 </button>
