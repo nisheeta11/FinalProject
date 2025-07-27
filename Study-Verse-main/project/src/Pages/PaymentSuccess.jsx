@@ -9,12 +9,36 @@ const PaymentSuccess = () => {
   const { clearCart } = useContext(CartContext);
 
   const handleOk = async () => {
+  console.log('userId:', localStorage.getItem('userId'));
+  console.log('email:', localStorage.getItem('email'));
+  console.log('purchasedCourses:', localStorage.getItem('purchasedCourses'));
+  console.log('amount:', localStorage.getItem('amount'));
+  console.log('method:', localStorage.getItem('method'));
+
+    const userId = localStorage.getItem('userId');
+    const email = localStorage.getItem('email');
+    const rawCourses = localStorage.getItem('purchasedCourses');
+    const amount = Number(localStorage.getItem('amount'));
+    const paymentMethod = localStorage.getItem('method');
+
+    let courses = [];
+    try {
+      courses = JSON.parse(rawCourses || '[]');
+    } catch (e) {
+      courses = [];
+    }
+
+    if (!userId || !email || !courses.length || !amount || !paymentMethod) {
+      alert('Some required purchase data is missing.');
+      return;
+    }
+
     const purchaseData = {
-      userId: localStorage.getItem('userId'),
-      email: localStorage.getItem('email'),
-      courses: JSON.parse(localStorage.getItem('purchasedCourses') || '[]'),
-      amount: Number(localStorage.getItem('amount')),
-      paymentMethod: localStorage.getItem('method'),
+      userId,
+      email,
+      courses,
+      amount,
+      paymentMethod,
       paymentDate: new Date().toISOString(),
     };
 

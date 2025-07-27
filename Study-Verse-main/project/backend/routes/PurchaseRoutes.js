@@ -28,4 +28,18 @@ router.post('/save', async (req, res) => {
   }
 });
 
+router.get('/mycourses', async (req, res) => {
+  try {
+    const userId = req.query.userId;
+    if (!userId) return res.status(400).json({ error: 'userId query param is required' });
+
+    const purchases = await Purchase.find({ userId });
+    const courses = purchases.flatMap(purchase => purchase.courses || []);
+    res.json(courses);
+  } catch (error) {
+    console.error('Error fetching purchased courses:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;
