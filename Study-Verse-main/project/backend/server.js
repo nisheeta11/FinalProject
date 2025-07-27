@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
-// const purchaseRoutes = require('./routes/PurchaseRoutes');
+const purchaseRoutes = require('./routes/PurchaseRoutes');
 const paymentRoutes = require('./routes/PaymentRoutes');
 const courseRoutes = require('./routes/course');
 const enrollmentRoutes = require('./routes/enrollment');
@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-// app.use('/api/purchase', purchaseRoutes);
+app.use('/api/purchase', purchaseRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/enrollments', enrollmentRoutes);

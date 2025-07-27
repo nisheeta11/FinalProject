@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { AuthContext } from '../Context/AuthContext';
-import CourseContext from '../Context/CourseContext';
 
 import './Paymentpage.css';
 import esewa from '../assets/esewa.jpg';
@@ -11,7 +10,7 @@ import mastercard from '../assets/mastercard.jpg';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Paymentpage = () => {
-  const { totalPrice } = useContext(CartContext);
+  const { totalPrice,  cartItems } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -54,13 +53,21 @@ const Paymentpage = () => {
       const data = await res.json();
 
       if (data.url) {
-        // Save info if needed
+
+        const purchasedCourses = cartItems.map((course) => ({
+          courseId: course._id,
+          title: course.title,
+          price: course.price,
+        }));
+
+        localStorage.setItem('purchasedCourses', JSON.stringify(purchasedCourses));
         localStorage.setItem('userId', user._id);
         localStorage.setItem('email', user.email);
         localStorage.setItem('amount', finalPrice.toString());
         localStorage.setItem('method', selectedMethod);
 
-        // Redirect to Stripe hosted checkout page
+
+
         window.location.href = data.url;
       } else {
         alert(data.error || 'Failed to start payment.');

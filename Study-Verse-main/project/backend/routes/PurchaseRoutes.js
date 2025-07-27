@@ -1,36 +1,31 @@
-// const express = require('express');
-// const Enrollment = require('../models/Enrollment');
-// const Course = require('../models/Course');
-// const Transaction = require('../models/Transaction');
+const express = require('express');
+const router = express.Router();
+const Purchase = require('../models/Purchase'); 
 
-// const router = express.Router();
+router.post('/save', async (req, res) => {
+  console.log('Purchase save request body:', req.body);
+  try {
+    const { userId, email, courses, amount, paymentMethod, paymentDate } = req.body;
 
-// router.post('/purchase', async (req, res) => {
-//   const { userId, courseId, paymentMethod } = req.body;
+    if (!userId || !courses || courses.length === 0) {
+      return res.status(400).json({ error: 'Missing required purchase info' });
+    }
 
-//   try {
-//     const course = await Course.findById(courseId);
-//     if (!course) return res.status(404).json({ message: 'Course not found' });
+    const newPurchase = new Purchase({
+      userId,
+      email,
+      courses,
+      amount,
+      paymentMethod,
+      paymentDate,
+    });
 
-//     const alreadyEnrolled = await Enrollment.findOne({ student: userId, course: courseId });
-//     if (alreadyEnrolled)
-//       return res.status(400).json({ message: 'Already purchased this course' });
+    await newPurchase.save();
+    res.status(201).json({ message: 'Purchase saved successfully' });
+  } catch (error) {
+    console.error('Save purchase error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
-//     await Enrollment.create({ student: userId, course: courseId });
-
-//     await Transaction.create({
-//       user: userId,
-//       course: courseId,
-//       amount: course.price,
-//       method: paymentMethod,
-//       status: 'Success',
-//     });
-
-//     res.status(200).json({ message: 'Course purchased successfully' });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Something went wrong' });
-//   }
-// });
-
-// module.exports = router;
+module.exports = router;
