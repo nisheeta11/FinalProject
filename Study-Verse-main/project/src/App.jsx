@@ -67,7 +67,7 @@ function App() {
       element: ( <><ScrollToTop /> <ProtectedRoute><Payment /></ProtectedRoute></> )
     },
      {
-      path: '/payment-success',
+      path: '/paymentsuccess',
       element: ( <><ScrollToTop /> <PaymentSuccess /> </> )
     },
      {
