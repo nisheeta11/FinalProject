@@ -50,7 +50,7 @@ const PaymentSuccess = () => {
 
     if (res.ok) {
       clearCart();
-      navigate('/purchasedcourses');
+      navigate('/');
     } else {
       const err = await res.json();
       alert('Failed to save purchase: ' + (err.error || 'Unknown error'));
